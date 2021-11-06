@@ -1,0 +1,29 @@
+<html>
+
+<head>
+<title>Appointment Page</title>
+</head>
+<body>
+Appointment Form
+<form action="{% url 'doctorappointment' %}" method="post">{% csrf_token %}
+<label for="timeslot" >Timeslot</label>
+  <input type="datetime-local" name="datetime">
+<script>
+</script>
+<label for="doctor">Doctor</label>
+<select name="doctor" >
+{%for d in doctors%}
+   <option> {{d.user.first_name}} {{d.user.last_name}} </option>
+{% endfor %}
+</select>
+<label for="patient">Patient</label>
+<select name="patient">
+{% for p in patients %}
+<option> {{p.user.first_name}} {{p.user.last_name}} </option>
+{% endfor %}
+</select>
+<input type="submit" value="submit">
+</form>
+</body>
+
+</html>
